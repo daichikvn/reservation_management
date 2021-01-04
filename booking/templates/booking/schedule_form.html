@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://fengyuanchen.github.io/datepicker/css/datepicker.css">
+{% endblock %}
+{% block content %}
+<div class="card m-3">
+    <div class="card-body">
+        <h4 class="text-center">予約登録</h4>
+        <form action="" method="POST">
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.date.label }}</label>
+                {{ form.date }}
+                {{ form.date.errors }}
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.time.label }}</label>
+                {{ form.time }}
+                {{ form.time.errors }}
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.name.label }}</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.num_of_people.label }}</label>
+                {{ form.num_of_people }}
+                {{ form.num_of_people.errors }}
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.tel_number.label }}</label>
+                {{ form.tel_number }}
+                {{ form.tel_number.errors }}
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.memo.label }}</label>
+                {{ form.memo }}
+                {{ form.memo.errors }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">登録</button>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
+<script src="https://fengyuanchen.github.io/datepicker/js/datepicker.ja-JP.js"></script>
+{% endblock %}
+{% block script %}
+<script>
+    $('#id_date').datepicker({
+        format: 'yyyy-mm-dd',
+        // language: 'ja-JP',
+    });
+</script>
+{% endblock %}
+
+

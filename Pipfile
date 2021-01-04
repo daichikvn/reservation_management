@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==2.2.8"
+django-import-export = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+server = "python manage.py runserver 0:8888"

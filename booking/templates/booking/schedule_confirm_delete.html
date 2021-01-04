@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+{% endblock %}
+{% block content %}
+<div class="card m-3">
+    <div class="card-body">
+        <h4 class="card-title">削除確認</h4>
+        <p class="card-text">
+            {{ object }} のデータを削除していいですか？
+        </p>
+        <form method="post">
+            <button class="btn btn-danger">削除する</button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
+{% block script %}
+{% endblock %}

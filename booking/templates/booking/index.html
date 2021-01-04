@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+{% endblock %}
+{% block content %}
+<div class="card m-3">
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                            <a class="page-link" href="{% url 'booking:index' %}?param=previous&year={{ this_year }}&month={{ this_month }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'booking:index' %}?param=previous&year={{ this_year }}&month={{ this_month }}">{{ previous_month }}月</a>
+                    </li>
+                    <li class="page-item"><a class="page-link bg-primary text-light" href="#!">{{ this_month }}月</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'booking:index' %}?param=next&year={{ this_year }}&month={{ this_month }}">{{ next_month }}月</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'booking:index' %}?param=next&year={{ this_year }}&month={{ this_month }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <ul class="list-group">
+            {% for day, info in booking_data_dict.items %}
+                <a href="{% url 'booking:details' this_year this_month day %}" class="text-dark">
+                    <li class="list-group-item d-flex justify-content-between align-items-center m-1">
+                        {{ day }}
+                        {% if info == "0組 - 0人" %}
+                            <p class="mb-0">- - - - - -</p>
+                        {% else %}
+                            <span class="badge badge-primary badge-pill">{{ info }}</span>
+                        {% endif %}
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<nav class="navbar fixed-bottom navbar-dark justify-content-center">
+    <button type="button" class="btn btn-warning mb-3">
+        <a href="{% url 'booking:booking_create'%}" class="text-dark">予約登録</a>
+    </button>
+</nav>
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
+{% block script %}
+{% endblock %}
